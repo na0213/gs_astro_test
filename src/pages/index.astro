@@ -1,46 +1,41 @@
 ---
-import Layout from '../layouts/Layout.astro'
 import Card from '../components/Card.astro';
+import Layout from '../layouts/Layout.astro';
 
 import { getCollection } from "astro:content";
-const allPosts = await getCollection('posts');
+const allPosts = await getCollection("posts");
 console.log(allPosts, 'allPosts');
-// import Card from '../components/Card.astro';
+
 ---
 
 <Layout title="Welcome to Astro.">
-	<main>
-		<!-- 本来iリファクタリングすべき箇所 -->
-		<div class="mv">
-			<h2>世界を変える<br>geekになろう</h2>
-		</div>
+    <main>
+        <div class="mv">
+            <h2>世界を変える<br>geekになろう</h2>
+        </div>
+        <!-- この中に書いていきます -->
 
-		<div class="blog">
-			<h3>記事の内容</h3>
-			{allPosts.map ((data, index) => (
-				<Card test={data}
-				/>
-				// <div>
-				// <p>{data.id}</p>
-				// <p>{data.slug}</p>
-				// <p>{data.body}</p>
-				// <p>{data.data.title}</p>
-				// <p>{data.data.pubDate}</p>
-				// <p>{data.data.description}</p>
-				// </div>
-			))}
-		</div>
+        <!-- 表示する領域と内容をこの箇所に設定します -->
+    
+        <div class="blog">
+            <h3>記事の内容</h3>
+            <!--  -->
+            {allPosts.map((data, index) => (
+                <Card test={data}/>
+            ))}
+        </div>
+        <!-- 表示する領域と内容をこの箇所に設定します -->
 
-	</main>
+    </main>
 </Layout>
 
 <style>
-	.mv {
-		height: 500px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+    .mv{
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 20px;
         font-weight: bold;
-	}
+    }
 </style>
